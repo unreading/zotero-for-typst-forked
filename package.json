@@ -37,6 +37,11 @@
           "maximum": 65535,
           "default": 23119,
           "description": "Port for connection to Better Bibtex"
+        },
+        "zoteroForTypst.textCompletion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic citations when typing ZCT in Typst files (requires reload)"
         }
       }
     }
