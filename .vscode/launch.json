@@ -12,6 +12,7 @@
 			"args": [
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			],
+			"sourceMaps": true,
 			"outFiles": [
 				"${workspaceFolder}/out/**/*.js"
 			],
@@ -25,6 +26,7 @@
 				"--extensionDevelopmentPath=${workspaceFolder}",
 				"--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
 			],
+			"sourceMaps": true,
 			"outFiles": [
 				"${workspaceFolder}/out/test/**/*.js"
 			],

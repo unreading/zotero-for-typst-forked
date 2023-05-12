@@ -1,26 +1,40 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import * as http from "http";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  console.log("Loaded Zotero for Typst");
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "zotero-for-typst" is now active!');
+  let disposable = vscode.commands.registerCommand(
+    "zotero-for-typst.pickCitation",
+    () => {
+      let url =
+        "http://127.0.0.1:23119/better-bibtex/cayw?format=playground" +
+        `&citeprefix=${encodeURIComponent("#cite(")}` +
+        `&citepostfix=${encodeURIComponent(")")}` +
+        `&keyprefix=${encodeURIComponent('"')}` +
+        `&keypostfix=${encodeURIComponent('"')}` +
+        `&separator=${encodeURIComponent(", ")}`;
+      console.log(url);
+      http.get(url, (res) => {
+        let data = "";
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('zotero-for-typst.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Zotero for Typst!');
-	});
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
 
-	context.subscriptions.push(disposable);
+        res.on("end", () => {
+          let editor = vscode.window.activeTextEditor;
+          editor.edit((edit) =>
+            editor.selections.forEach((selection) =>
+              edit.replace(selection, data)
+            )
+          );
+        });
+      });
+    }
+  );
+
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
