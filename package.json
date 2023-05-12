@@ -17,7 +17,24 @@
         "command": "zotero-for-typst.pickCitation",
         "title": "Pick Zotero citation for Typst"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Zotero for Typst",
+      "properties": {
+        "zoteroForTypst.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Host for connection to Better Bibtex"
+        },
+        "zoteroForTypst.port": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 23119,
+          "description": "Port for connection to Better Bibtex"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
