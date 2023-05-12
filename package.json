@@ -12,12 +12,14 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:typst"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "zotero-for-typst.pickCitation",
+        "command": "zoteroForTypst.pickCitation",
         "title": "Pick Zotero citation for Typst"
       }
     ],
