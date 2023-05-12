@@ -2,7 +2,8 @@
   "name": "zotero-for-typst",
   "displayName": "Zotero for Typst",
   "description": "Zotero integration for Typst files",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.76.0"
   },

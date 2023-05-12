@@ -2,8 +2,7 @@
 
 All notable changes to the "zotero-for-typst" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.1]
 
-## [Unreleased]
-
-- Initial release
+- Insert citation as `#cite(...)` command.
+- Setting for host and port.
