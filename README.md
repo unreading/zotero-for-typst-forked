@@ -4,4 +4,4 @@ Zotero integration for Typst file in VSCode. This requires the Better Bibtex plu
 
 ## Features
 
-- Insert `#cite(...)` style citation.
+- Insert `@...` style citation.

@@ -2,16 +2,12 @@ import * as vscode from "vscode";
 import * as http from "http";
 
 function insertCitation(range?: vscode.Range) {
-  let config = vscode.workspace.getConfiguration("zoteroForTypst");
-  let host = config.get("host");
-  let port = config.get("port");
-  let url =
-    `http://${host}:${port}/better-bibtex/cayw?format=playground` +
-    `&citeprefix=${encodeURIComponent("#cite(")}` +
-    `&citepostfix=${encodeURIComponent(")")}` +
-    `&keyprefix=${encodeURIComponent('"')}` +
-    `&keypostfix=${encodeURIComponent('"')}` +
-    `&separator=${encodeURIComponent(", ")}`;
+  const config = vscode.workspace.getConfiguration("zoteroForTypst");
+  const host = config.get("host");
+  const port = config.get("port");
+  const url =
+    `http://${host}:${port}/better-bibtex/cayw?format=eta` +
+    `&template=${encodeURIComponent("<% it.items.forEach(function(item){ %>@<%= item.citationKey %><% }) %>")}`;
   console.log(url);
   http
     .get(url, (res) => {
