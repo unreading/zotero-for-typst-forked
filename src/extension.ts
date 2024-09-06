@@ -5,13 +5,7 @@ function insertCitation(range?: vscode.Range) {
   let config = vscode.workspace.getConfiguration("zoteroForTypst");
   let host = config.get("host");
   let port = config.get("port");
-  let url =
-    `http://${host}:${port}/better-bibtex/cayw?format=playground` +
-    `&citeprefix=${encodeURIComponent("#cite(")}` +
-    `&citepostfix=${encodeURIComponent(")")}` +
-    `&keyprefix=${encodeURIComponent('"')}` +
-    `&keypostfix=${encodeURIComponent('"')}` +
-    `&separator=${encodeURIComponent(", ")}`;
+  let url = `http://${host}:${port}/better-bibtex/cayw?format=typst`;
   console.log(url);
   http
     .get(url, (res) => {
@@ -24,9 +18,7 @@ function insertCitation(range?: vscode.Range) {
       res.on("end", () => {
         let editor = vscode.window.activeTextEditor;
         if (range) {
-          editor.edit((edit) =>
-            edit.replace(range, data)
-          );
+          editor.edit((edit) => edit.replace(range, data));
         } else {
           editor.edit((edit) =>
             editor.selections.forEach((selection) =>
@@ -66,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
         let editor = vscode.window.activeTextEditor;
         let document = editor.document;
         let lang = document.languageId;
-        if (lang !== 'typst') {
+        if (lang !== "typst") {
           return;
         }
         console.log(event);
