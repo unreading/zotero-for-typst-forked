@@ -5,7 +5,11 @@ function insertCitation(range?: vscode.Range) {
   let config = vscode.workspace.getConfiguration("zoteroForTypst");
   let host = config.get("host");
   let port = config.get("port");
-  let url = `http://${host}:${port}/better-bibtex/cayw?format=typst`;
+  let format = "pandoc";
+  if (config.get("useCiteCommand")) {
+    format = "typst";
+  }
+  let url = `http://${host}:${port}/better-bibtex/cayw?format=${format}`;
   console.log(url);
   http
     .get(url, (res) => {

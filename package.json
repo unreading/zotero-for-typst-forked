@@ -2,7 +2,7 @@
   "name": "zotero-for-typst",
   "displayName": "Zotero for Typst",
   "description": "Zotero integration for Typst files",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "https://gitlab.com/SolidTux/zotero-for-typst",
   "publisher": "SolidTux",
   "license": "MIT",
@@ -42,6 +42,11 @@
           "type": "boolean",
           "default": true,
           "description": "Enable automatic citations when typing ZCT in Typst files (requires reload)"
+        },
+        "zoteroForTypst.useCiteCommand": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use the cite command (if turned off @... is being used)."
         }
       }
     }
@@ -55,17 +60,17 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.76.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
-    "eslint": "^8.39.0",
-    "glob": "^8.1.0",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.76.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^9.11.1",
+    "glob": "^11.0.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.0.4",
-    "@vscode/test-electron": "^2.3.0"
+    "typescript": "^5.0.4"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
